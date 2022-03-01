@@ -108,6 +108,6 @@ public class JsonTests {
         var poker = new Poker(jsonObject);
         Assertions.assertEquals(320, poker.getCurrentBuyIn());
         Assertions.assertEquals(240, poker.getMinimumRaise());
-        Assertions.assertEquals("", poker.getPlayersCards());
+        //Assertions.assertEquals("", poker.getPlayersCards());
     }
 }

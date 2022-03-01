@@ -20,9 +20,10 @@ public class Poker {
 
     public Card[] getPlayersCards() {
     var player = getPlayer();
+    return null;
     }
 
     private PokerPlayer getPlayer() {
-        return new PokerPlayer(jsonObject.get("players").getAsJsonArray().getjsonObject.get("in_action").getAsInt()])
+        return new PokerPlayer(jsonObject.get("players").getAsJsonArray().get(jsonObject.get("in_action").getAsInt()));
     }
 }
