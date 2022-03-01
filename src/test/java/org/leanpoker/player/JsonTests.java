@@ -6,6 +6,8 @@ import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 public class JsonTests {
     @Test
     void testSomeJson(){
@@ -108,6 +110,6 @@ public class JsonTests {
         var poker = new Poker(jsonObject);
         Assertions.assertEquals(320, poker.getCurrentBuyIn());
         Assertions.assertEquals(240, poker.getMinimumRaise());
-        //Assertions.assertEquals("", poker.getPlayersCards());
+        Assertions.assertEquals("", Arrays.toString(poker.getPlayersCards()));
     }
 }

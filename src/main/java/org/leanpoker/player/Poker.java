@@ -20,7 +20,7 @@ public class Poker {
 
     public Card[] getPlayersCards() {
     var player = getPlayer();
-    return null;
+    return player.getCards();
     }
 
     private PokerPlayer getPlayer() {
