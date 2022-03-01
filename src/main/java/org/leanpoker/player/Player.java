@@ -1,13 +1,16 @@
 package org.leanpoker.player;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 public class Player {
 
     static final String VERSION = "Default Java folding player";
 
     public static int betRequest(JsonElement request) {
-        return 0;
+        var poker = new Poker(request);
+
+        return poker.getMinimumRaise();
     }
 
     public static void showdown(JsonElement game) {
