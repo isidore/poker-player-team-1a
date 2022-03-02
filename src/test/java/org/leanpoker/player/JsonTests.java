@@ -110,6 +110,7 @@ public class JsonTests {
         var poker = new Poker(jsonObject);
         Assertions.assertEquals(320, poker.getCurrentBuyIn());
         Assertions.assertEquals(240, poker.getMinimumRaise());
-        Assertions.assertEquals("", Arrays.toString(poker.getPlayersCards()));
+        Assertions.assertEquals("[6 of hearts, K of spades]", Arrays.toString(poker.getPlayersCards()));
+        Assertions.assertEquals("[4 of spades, A of hearts, 6 of clubs]", Arrays.toString(poker.getCommunityCards()));
     }
 }

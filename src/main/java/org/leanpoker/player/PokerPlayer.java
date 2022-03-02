@@ -13,9 +13,14 @@ public class PokerPlayer {
 
     public Card[] getCards() {
 
-        String rank = jsonObject.get("hole_cards").getAsJsonArray().get(0)
-                .getAsJsonObject().get("rank").getAsString();
-        String suit = "";
-        return new Card[]{new Card(rank,suit)};
+        JsonObject card1 = jsonObject.get("hole_cards").getAsJsonArray().get(0)
+                .getAsJsonObject();
+        JsonObject card2 = jsonObject.get("hole_cards").getAsJsonArray().get(1)
+                .getAsJsonObject();
+        String rank1 = card1.get("rank").getAsString();
+        String suit1 = card1.get("suit").getAsString();
+        String rank2 = card2.get("rank").getAsString();
+        String suit2 = card2.get("suit").getAsString();
+        return new Card[]{new Card(rank1,suit1),new Card(rank2,suit2)};
     }
 }
