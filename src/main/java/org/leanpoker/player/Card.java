@@ -1,6 +1,14 @@
 package org.leanpoker.player;
 
 public class Card {
+    public String getRank() {
+        return rank;
+    }
+
+    public String getSuit() {
+        return suit;
+    }
+
     private String rank;
     private String suit;
 

@@ -2,8 +2,12 @@ package org.leanpoker.player;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.lambda.query.Query;
+import org.lambda.query.Queryable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
 
 public class Poker {
     private JsonObject jsonObject;
@@ -39,5 +43,15 @@ public class Poker {
             cards.add(new Card(rank, suit));
         }
         return cards.toArray(new Card[0]);
+    }
+
+    public boolean isThreeOfAKind() {
+        // put the two arrays together
+        // take the first...
+        var cards =Queryable.as(getPlayersCards());
+        cards.addAll(Arrays.asList(getCommunityCards()));
+        Queryable<Map.Entry<String, Queryable<Card>>> entries = Query.groupBy(cards, (Card c) -> c.getRank()).where(e -> 3 <= e.getValue().size() );
+
+        return 0 < entries.size() ;
     }
 }

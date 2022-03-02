@@ -92,7 +92,7 @@ public class JsonTests {
   ],
   "community_cards": [                            // Finally the array of community cards.
       {
-          "rank": "4",
+          "rank": "6",
           "suit": "spades"
       },
       {
@@ -111,6 +111,8 @@ public class JsonTests {
         Assertions.assertEquals(320, poker.getCurrentBuyIn());
         Assertions.assertEquals(240, poker.getMinimumRaise());
         Assertions.assertEquals("[6 of hearts, K of spades]", Arrays.toString(poker.getPlayersCards()));
-        Assertions.assertEquals("[4 of spades, A of hearts, 6 of clubs]", Arrays.toString(poker.getCommunityCards()));
+        Assertions.assertEquals("[6 of spades, A of hearts, 6 of clubs]", Arrays.toString(poker.getCommunityCards()));
+        Assertions.assertTrue( poker.isThreeOfAKind());
+
     }
 }
