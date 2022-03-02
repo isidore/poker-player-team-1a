@@ -16,6 +16,27 @@ public class Poker {
         this.jsonObject = jsonObject.getAsJsonObject();
     }
 
+    public static boolean isStraight(Card[] cards) {
+        Queryable<Card> cards1 = Queryable.as(cards).orderBy(c -> c.getNumericRank());
+        int start = 0;
+        for (int i = 0; i < cards1.size(); i++) {
+            if (i == 0) {
+                start = cards1.get(i).getNumericRank();
+            }
+            else{
+                var current = cards1.get(i).getNumericRank();
+                if (start +1  == current){
+                    start = current;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public int getCurrentBuyIn() {
         return jsonObject.get("current_buy_in").getAsInt();
     }

@@ -116,4 +116,15 @@ public class JsonTests {
         Assertions.assertEquals(1590, poker.getAllIn());
 
     }
+
+    @Test
+    void testStraight(    ) {
+        var cards = new Card[]{new Card("2","hearts"),
+                new Card("3","hearts"),
+                new Card("4","spades"),
+                new Card("5","hearts"),
+                new Card("6","hearts"),
+        };
+        Assertions.assertTrue(Poker.isStraight(cards));
+    }
 }
