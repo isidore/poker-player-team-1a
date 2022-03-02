@@ -54,4 +54,8 @@ public class Poker {
 
         return 0 < entries.size() ;
     }
+
+    public int getAllIn() {
+        return getPlayer().getStack();
+    }
 }

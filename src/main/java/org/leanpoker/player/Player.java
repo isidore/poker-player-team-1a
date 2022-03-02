@@ -9,7 +9,9 @@ public class Player {
 
     public static int betRequest(JsonElement request) {
         var poker = new Poker(request);
-
+        if (poker.isThreeOfAKind()) {
+            return poker.getAllIn();
+        }
         return poker.getMinimumRaise();
     }
 

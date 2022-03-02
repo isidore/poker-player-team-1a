@@ -113,6 +113,7 @@ public class JsonTests {
         Assertions.assertEquals("[6 of hearts, K of spades]", Arrays.toString(poker.getPlayersCards()));
         Assertions.assertEquals("[6 of spades, A of hearts, 6 of clubs]", Arrays.toString(poker.getCommunityCards()));
         Assertions.assertTrue( poker.isThreeOfAKind());
+        Assertions.assertEquals(1590, poker.getAllIn());
 
     }
 }
