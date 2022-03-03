@@ -23,8 +23,9 @@ public class Poker {
 
     private static Boolean isStraightPossibleForThisCard(Queryable<Card> cards1, Card c) {
         int numericRank = c.getNumericRank();
-        for (int i = 0; i < 5; i++) {
-            if (! cards1.any(c2 -> c2.getNumericRank() == numericRank+1)){
+        for (int i = 0; i < 4; i++) {
+            var next = numericRank + i;
+            if (! cards1.any(c2 -> c2.getNumericRank() == next)){
                 return false;
             }
 

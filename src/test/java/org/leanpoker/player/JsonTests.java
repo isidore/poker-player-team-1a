@@ -127,4 +127,37 @@ public class JsonTests {
         };
         Assertions.assertTrue(Poker.isStraight(cards));
     }
+    @Test
+    void testStraightWithDuplicate(    ) {
+        var cards = new Card[]{new Card("2","hearts"),new Card("2","spades"),
+                new Card("3","hearts"),
+                new Card("4","spades"),
+                new Card("5","hearts"),
+                new Card("6","hearts"),
+        };
+        Assertions.assertTrue(Poker.isStraight(cards));
+    }
+    @Test
+    void testStraightWithGap(    ) {
+        var cards = new Card[]{new Card("2","hearts"),
+                new Card("4","spades"),
+                new Card("6","hearts"),
+                new Card("7","hearts"),
+                new Card("8","hearts"),
+                new Card("9","hearts"),
+                new Card("10","hearts"),
+        };
+        Assertions.assertTrue(Poker.isStraight(cards));
+    }    @Test
+    void testNoStraight(    ) {
+        var cards = new Card[]{new Card("2","hearts"),
+                new Card("4","spades"),
+                new Card("6","hearts"),
+                new Card("7","hearts"),
+                new Card("3","hearts"),
+                new Card("9","hearts"),
+                new Card("10","hearts"),
+        };
+        Assertions.assertFalse(Poker.isStraight(cards));
+    }
 }
