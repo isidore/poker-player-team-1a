@@ -23,8 +23,14 @@ public class Player {
 
     private static boolean isPoorHand(Poker poker) {
         // if no pair or no face card
-        var pair = isPair(poker.getPlayersCards());
-        var isHighCards = isHighCards(poker.getPlayersCards());
+
+        Card[] playersCards = poker.getPlayersCards();
+        return isPoorHand(playersCards);
+    }
+
+    public static boolean isPoorHand(Card[] playersCards) {
+        var pair = isPair(playersCards);
+        var isHighCards = isHighCards(playersCards);
         return !(isHighCards || pair);
     }
 

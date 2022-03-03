@@ -3,6 +3,7 @@ package org.leanpoker.player;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.approvaltests.combinations.CombinationApprovals;
 import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -117,6 +118,7 @@ public class JsonTests {
         Assertions.assertEquals(1590, poker.getAllIn());
         Assertions.assertFalse(poker.isFirstBet());
 
+
     }
 
     @Test
@@ -161,6 +163,19 @@ public class JsonTests {
                 new Card("10","hearts"),
         };
         Assertions.assertFalse(Poker.isStraight(cards));
+    }
+    @Test
+    void testPoorHand(    ) {
+        var cards = new Card[]{new Card("2","hearts"),
+                new Card("4","spades"),
+                new Card("6","hearts"),
+                new Card("7","hearts"),
+                new Card("K","hearts"),
+                new Card("Q","hearts"),
+                new Card("A","hearts"),
+        };
+        CombinationApprovals.verifyAllCombinations(
+                (c1, c2) -> Player.isPoorHand(new Card[]{c1, c2}), cards, cards);
     }
 
 }
