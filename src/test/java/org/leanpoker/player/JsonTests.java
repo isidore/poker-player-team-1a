@@ -3,6 +3,7 @@ package org.leanpoker.player;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -114,6 +115,7 @@ public class JsonTests {
         Assertions.assertEquals("[6 of spades, A of hearts, 6 of clubs]", Arrays.toString(poker.getCommunityCards()));
         Assertions.assertTrue( poker.isThreeOfAKind());
         Assertions.assertEquals(1590, poker.getAllIn());
+        Assertions.assertFalse(poker.isFirstBet());
 
     }
 
@@ -160,4 +162,5 @@ public class JsonTests {
         };
         Assertions.assertFalse(Poker.isStraight(cards));
     }
+
 }

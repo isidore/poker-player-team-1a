@@ -33,6 +33,8 @@ public class Poker {
         return true;
     }
 
+    //private static Boolean isFlush()
+
 
     public int getCurrentBuyIn() {
         return jsonObject.get("current_buy_in").getAsInt();
@@ -75,5 +77,9 @@ public class Poker {
 
     public int getAllIn() {
         return getPlayer().getStack();
+    }
+
+    public boolean isFirstBet() {
+        return getCommunityCards().length == 0;
     }
 }
