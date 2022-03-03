@@ -43,7 +43,7 @@ public class Player {
     }
 
     private static boolean isGreatHand(Poker poker) {
-        return poker.isThreeOfAKind();
+        return poker.isThreeOfAKind() || poker.isStraight();
     }
 
 

@@ -82,4 +82,8 @@ public class Poker {
     public boolean isFirstBet() {
         return getCommunityCards().length == 0;
     }
+
+    public boolean isStraight() {
+        return isStraight(getPlayersCards());
+    }
 }
