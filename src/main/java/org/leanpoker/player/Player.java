@@ -6,7 +6,7 @@ import org.lambda.query.Queryable;
 
 public class Player {
 
-    static final String VERSION = "Default Java folding player";
+    static final String VERSION = "v.0.0.1-log";
 
     public static int betRequest(JsonElement request) {
         SimpleLogger.variable(request.toString());
