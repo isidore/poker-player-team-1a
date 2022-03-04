@@ -12,30 +12,27 @@ public class Player {
         SimpleLogger.variable(request.toString());
         var poker = new Poker(request);
         if (poker.isFirstBet()){
-            if (isPoorHand(poker)){
-                return 0;
-            }else{
-                return poker.getAllIn();
-            }
+            double poorHand = isPoorHand(poker);
+            return (int) (poorHand * poker.getAllIn());
 
         }
 
         return poker.getAllIn();
     }
 
-    private static boolean isPoorHand(Poker poker) {
+    private static double isPoorHand(Poker poker) {
         // if no pair or no face card
 
         Card[] playersCards = poker.getPlayersCards();
         return isPoorHand(playersCards);
     }
 
-    public static boolean isPoorHand(Card[] playersCards) {
+    public static double isPoorHand(Card[] playersCards) {
         var pair = isPair(playersCards);
         var isHighCards = isHighCards(playersCards);
         var isPossibleFlush = isPossibleFlush(playersCards);
         var isPossibleStraight = isPossibleStraight(playersCards);
-        return !(pair || isHighCards || isPossibleFlush || isPossibleStraight);
+        return !(pair || isHighCards || isPossibleFlush || isPossibleStraight)? 0.0 : 1.0;
     }
 
     private static boolean isPossibleFlush(Card[] playersCards) {

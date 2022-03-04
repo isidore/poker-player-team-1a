@@ -13,6 +13,6 @@ public class End2EndTests {
                 """;
         JsonElement jsonObject = new JsonParser().parse(json);
         int actual = Player.betRequest(jsonObject);
-        Assertions.assertEquals(-1, actual);
+        Assertions.assertEquals(1000, actual);
     }
 }
