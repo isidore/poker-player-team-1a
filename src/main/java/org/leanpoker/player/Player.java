@@ -6,7 +6,7 @@ import org.lambda.query.Queryable;
 
 public class Player {
 
-    static final String VERSION = "v.0.0.4-pairorhigh";
+    static final String VERSION = "v.0.0.5-flush";
 
     public static int betRequest(JsonElement request) {
         SimpleLogger.variable(request.toString());
@@ -33,7 +33,12 @@ public class Player {
     public static boolean isPoorHand(Card[] playersCards) {
         var pair = isPair(playersCards);
         var isHighCards = isHighCards(playersCards);
-        return !(pair || isHighCards);
+        var isPossibleFlush = isPossibleFlush(playersCards);
+        return !(pair || isHighCards || isPossibleFlush);
+    }
+
+    private static boolean isPossibleFlush(Card[] playersCards) {
+        return playersCards[0].getSuit().equals(playersCards[1].getSuit());
     }
 
     private static boolean isHighCards(Card[] playersCards) {
