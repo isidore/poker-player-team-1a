@@ -6,7 +6,7 @@ import org.lambda.query.Queryable;
 
 public class Player {
 
-    static final String VERSION = "v.0.0.2-pair";
+    static final String VERSION = "v.0.0.3-pairoreverything";
 
     public static int betRequest(JsonElement request) {
         SimpleLogger.variable(request.toString());
@@ -20,7 +20,7 @@ public class Player {
 
         }
 
-        return poker.getMinimumRaise();
+        return poker.getAllIn();
     }
 
     private static boolean isPoorHand(Poker poker) {
