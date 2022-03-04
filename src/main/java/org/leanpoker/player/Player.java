@@ -6,7 +6,7 @@ import org.lambda.query.Queryable;
 
 public class Player {
 
-    static final String VERSION = "v.0.0.5-flush";
+    static final String VERSION = "v.0.0.6-straight";
 
     public static int betRequest(JsonElement request) {
         SimpleLogger.variable(request.toString());
@@ -34,11 +34,17 @@ public class Player {
         var pair = isPair(playersCards);
         var isHighCards = isHighCards(playersCards);
         var isPossibleFlush = isPossibleFlush(playersCards);
-        return !(pair || isHighCards || isPossibleFlush);
+        var isPossibleStraight = isPossibleStraight(playersCards);
+        return !(pair || isHighCards || isPossibleFlush || isPossibleStraight);
     }
 
     private static boolean isPossibleFlush(Card[] playersCards) {
         return playersCards[0].getSuit().equals(playersCards[1].getSuit());
+    }
+    private static boolean isPossibleStraight(Card[] playersCards) {
+        Card[] cards = Queryable.as(playersCards).orderBy(c -> c.getNumericRank()).asArray();
+
+        return cards[0].getNumericRank() == (cards[1].getNumericRank() -1);
     }
 
     private static boolean isHighCards(Card[] playersCards) {
