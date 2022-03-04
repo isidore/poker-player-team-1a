@@ -6,7 +6,7 @@ import org.lambda.query.Queryable;
 
 public class Player {
 
-    static final String VERSION = "v.0.0.1-log";
+    static final String VERSION = "v.0.0.2-pair";
 
     public static int betRequest(JsonElement request) {
         SimpleLogger.variable(request.toString());
@@ -14,12 +14,12 @@ public class Player {
         if (poker.isFirstBet()){
             if (isPoorHand(poker)){
                 return 0;
+            }else{
+                return poker.getAllIn();
             }
 
         }
-        if (isGreatHand(poker)) {
-            return poker.getAllIn();
-        }
+
         return poker.getMinimumRaise();
     }
 
@@ -33,7 +33,7 @@ public class Player {
     public static boolean isPoorHand(Card[] playersCards) {
         var pair = isPair(playersCards);
         var isHighCards = isHighCards(playersCards);
-        return !(isHighCards || pair);
+        return !(pair);
     }
 
     private static boolean isHighCards(Card[] playersCards) {
