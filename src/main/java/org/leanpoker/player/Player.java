@@ -6,7 +6,7 @@ import org.lambda.query.Queryable;
 
 public class Player {
 
-    static final String VERSION = "v.0.0.6-straight";
+    static final String VERSION = "v.0.0.7-double";
 
     public static int betRequest(JsonElement request) {
         SimpleLogger.variable(request.toString());
