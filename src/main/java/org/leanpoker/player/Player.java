@@ -1,6 +1,7 @@
 package org.leanpoker.player;
 
 import com.google.gson.JsonElement;
+import com.spun.util.logger.SimpleLogger;
 import org.lambda.query.Queryable;
 
 public class Player {
@@ -8,6 +9,7 @@ public class Player {
     static final String VERSION = "Default Java folding player";
 
     public static int betRequest(JsonElement request) {
+        SimpleLogger.variable(request.toString());
         var poker = new Poker(request);
         if (poker.isFirstBet()){
             if (isPoorHand(poker)){
